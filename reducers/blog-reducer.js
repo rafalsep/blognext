@@ -16,12 +16,10 @@ const blogReducer = createReducer(initialState, {
     return { ...state, trendingArticles: action.trendingArticles };
   },
   [FETCH_ARTICLE_RESPONDED](state, action) {
-    const articles = state.get('articles');
-    return state.set('articles', unionBy([action.article], articles, '_id'));
+    return { ...state, articles: unionBy([action.article], state.articles, '_id') };
   },
   [ADD_COMMENT_RESPONDED](state, action) {
-    const articles = state.get('articles');
-    return state.set('articles', unionBy([action.updatedArticle], articles, '_id'));
+    return { ...state, articles: unionBy([action.updatedArticle], state.articles, '_id') };
   }
 });
 

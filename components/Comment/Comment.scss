@@ -1,0 +1,41 @@
+.Comment {
+  margin-top: 20px;
+  .comment__footer {
+    position: relative;
+    .comment__author {
+      padding-left: 82px;
+      .author__avatar {
+        height: 60px;
+        width: 60px;
+        position: absolute;
+        left: 0;
+        border-radius: 50%;
+      }
+    }
+    .comment__timestamp {
+      padding-left: 82px;
+    }
+  }
+  .comment__body {
+    margin-top: 20px;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    border-radius: 2px;
+    .comment__content:after {
+      border-color: rgba(0, 0, 0, 0.05) transparent;
+      z-index: 1;
+      top: -10px;
+      content: '';
+      position: absolute;
+      border-style: solid;
+      border-width: 0 10px 10px;
+      display: block;
+      width: 0;
+      left: 18px;
+    }
+  }
+  .comment__reply {
+    margin: 10px 0;
+  }
+}

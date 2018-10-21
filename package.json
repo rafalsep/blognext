@@ -1,6 +1,25 @@
 {
-  "name": "with-redux",
-  "version": "1.0.0",
+  "name": "gooddev",
+  "version": "0.1.0",
+  "description": "Blog about programming best practices",
+  "main": "pages/blog.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:rafalsep/blognext.git"
+  },
+  "engines": {
+    "npm": ">=5",
+    "node": ">=8"
+  },
+  "author": "Rafal Szczepankiewicz",
+  "license": "MIT",
+  "keywords": [
+    "blog",
+    "best practices",
+    "good developer",
+    "sanity",
+    "react"
+  ],
   "scripts": {
     "dev": "node server/server.js",
     "build": "next build",
@@ -16,6 +35,7 @@
     "next": "7.0.2",
     "next-redux-wrapper": "2.0.0",
     "next-routes": "1.4.2",
+    "react-share": "2.3.1",
     "prop-types": "15.6.2",
     "react": "16.5.2",
     "react-dom": "16.5.2",
@@ -27,7 +47,6 @@
     "reselect": "4.0.0",
     "uuid": "3.3.2"
   },
-  "license": "MIT",
   "devDependencies": {
     "@zeit/next-sass": "1.0.1",
     "babel-plugin-module-resolver": "3.1.1",
