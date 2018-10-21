@@ -1,0 +1,21 @@
+{
+  "name": "Good Developer",
+  "short_name": "Good Developer",
+  "theme_color": "#3367D6",
+  "background_color": "#3367D6",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/blog",
+  "icons": [
+    {
+      "src": "./icons-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "./icons-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

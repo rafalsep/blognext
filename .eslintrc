@@ -1,0 +1,65 @@
+{
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react"
+  ],
+  "plugins": [
+    "prettier",
+    "react",
+    "jsx-a11y",
+    "lodash"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 9,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "globals": {
+    "FB": true,
+    "gapi": true,
+    "ga": true,
+    "window": true
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "import/prefer-default-export": 0,
+    "react/jsx-filename-extension": 0,
+    "prefer-destructuring": 0,
+    "react/destructuring-assignment": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "no-use-before-define": [
+      "error",
+      {
+        "functions": false,
+        "classes": true,
+        "variables": true
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {
+        "alias": {
+          "components": "./components",
+          "containers": "./containers",
+          "common": "./common",
+          "pages": "./pages",
+          "events": "./events",
+          "utils": "./utils",
+          "reducers": "./reducers",
+          "constants": "./constants",
+          "services": "./services",
+          "styles": "./styles"
+        }
+      }
+    }
+  }
+}

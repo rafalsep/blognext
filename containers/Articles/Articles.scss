@@ -1,0 +1,30 @@
+@import 'styles/variables.scss';
+
+.articles {
+  .articles__layout {
+    display: flex;
+    padding: 30px 25px;
+    max-width: 1280px;
+    margin: 0 auto;
+    .articles__list {
+      margin: 0 10px;
+      flex-grow: 1;
+    }
+    .articles__sidebar {
+      flex-basis: 250px;
+      flex-shrink: 0;
+      margin: 0 10px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  @media only screen and (max-width: 1024px) {
+    .articles__layout {
+      flex-direction: column;
+      .articles__sidebar {
+        flex-basis: auto;
+        flex-shrink: 1;
+      }
+    }
+  }
+}

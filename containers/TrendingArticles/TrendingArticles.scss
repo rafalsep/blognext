@@ -1,0 +1,61 @@
+@import 'styles/variables.scss';
+
+.TrendingArticles {
+  .trending-articles__header {
+    font-family: $secondary-font;
+    letter-spacing: $secondary-font-letter-spacing;
+    font-size: $secondary-font-size;
+    font-weight: $secondary-font-weight;
+    line-height: $secondary-font-line-height;
+    color: $secondary-color;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+  .trending-articles__body {
+    background: $secondary-background-color;
+    box-shadow: $main-box-shadow;
+    border: 1px solid $main-border-color;
+
+    .trending-articles__link {
+      display: flex;
+      flex-direction: row;
+      flex-grow: 1;
+      flex-basis: 100%;
+      border-bottom: 1px solid $secondary-border-color;
+      &:hover {
+        .trending-articles__image {
+          img {
+            opacity: 1;
+          }
+        }
+      }
+      .trending-articles__image {
+        flex-shrink: 0;
+        width: 75px;
+        min-height: 110px;
+        display: block;
+        overflow: hidden;
+        position: relative;
+        img {
+          bottom: 0;
+          display: block;
+          left: 50%;
+          min-width: 100%;
+          opacity: 0.2;
+          position: absolute;
+          top: 0;
+          transform: translateX(-50%);
+          transition: opacity 1s;
+          min-height: 100%;
+        }
+      }
+      .trending-articles__title {
+        font-family: $secondary-font;
+        font-size: $font-size-sm;
+        line-height: $font-size-sm-line-height;
+        padding: 10px 20px 10px 15px;
+        color: $primary-color;
+      }
+    }
+  }
+}
