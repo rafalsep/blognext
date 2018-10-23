@@ -23,10 +23,5 @@ export default class Article extends PureComponent {
 }
 
 Article.propTypes = {
-  article: shape({}),
-  fetchArticle: func.isRequired
-};
-
-Article.defaultProps = {
-  article: undefined
+  article: shape({}).isRequired
 };

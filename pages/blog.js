@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { arrayOf, shape } from 'prop-types';
@@ -76,4 +75,4 @@ function fetchArticlesAction() {
 //   articles: state => { debugger; return state.blog; }
 // });
 
-export default connect()(ArticlesPage);
+export default ArticlesPage;

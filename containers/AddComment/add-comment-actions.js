@@ -62,7 +62,7 @@ export function login(loginProvider) {
 
 export function logout() {
   return (dispatch, getState) => {
-    const loginProvider = getState().getIn(['login', 'loginProvider']);
+    const loginProvider = getState().login.loginProvider;
     if (loginProvider === LOGIN_PROVIDER_FACEBOOK) {
       FB.logout(() => {
         dispatch({ type: USER_LOGGED_OUT });

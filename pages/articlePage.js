@@ -4,29 +4,20 @@ import { connect } from 'react-redux';
 import { arrayOf, shape } from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { ANALYTICS_APP_ID, FACEBOOK_APP_ID } from 'common/env';
+import { FETCH_ARTICLE_RESPONDED } from 'events/article-events';
 import { APP_URL } from 'constants/seo';
+import { imageUrlFor } from 'utils/imageLoader';
+import { fetchArticle } from 'services/article-service';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import 'styles/theme.scss';
-import { fetchArticle } from 'services/article-service';
 import { selectArticleName } from 'common/article-name-selector';
-import { FETCH_ARTICLE_RESPONDED } from 'events/article-events';
-import Article from '../containers/Article/Article';
-import { imageUrlFor } from '../utils/imageLoader';
-import { initFacebook } from 'vendors/facebook-provider';
-import { initGooglePlus } from 'vendors/google-plus-provider';
-import { initAnalytics } from 'vendors/analytics-provider';
-import { fetchTrendingArticles } from '../services/article-service';
-import { FETCH_TRENDING_ARTICLES_RESPONDED } from '../events/article-events';
+import Article from 'containers/Article/Article';
+import 'styles/theme.scss';
 
 class ArticlesPage extends PureComponent {
   static async getInitialProps({ store }) {
     const article = await store.dispatch(fetchArticleAction());
     return { article };
-  }
-
-  componentDidMount() {
-    this.props.initProviders();
   }
 
   render() {
@@ -81,15 +72,4 @@ function fetchArticleAction() {
     });
 }
 
-export function initProviders() {
-  return dispatch => {};
-}
-
-const mapDispatchToProps = dispatch => ({
-  initProviders: () => dispatch(initProviders())
-});
-
-export default connect(
-  () => ({}),
-  mapDispatchToProps
-)(ArticlesPage);
+export default ArticlesPage;
