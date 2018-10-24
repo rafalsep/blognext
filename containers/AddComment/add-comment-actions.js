@@ -6,18 +6,22 @@ import { USER_LOGGED_OUT, USER_LOGIN_REQUESTED } from 'events/login-events';
 import { LOGIN_PROVIDER_FACEBOOK, LOGIN_PROVIDER_GOOGLE } from 'constants/login-providers';
 import { selectArticle } from 'common/article-selector';
 
+const countReplies = replies => replies.filter(reply => reply.replies).reduce((memo, reply) => memo + reply.replies.length + countReplies(reply.replies), 0);
+
 export function addCommentAction(comment, commentForm) {
   return (dispatch, getState) => {
     const selectedArticle = selectArticle()(getState());
 
     if (!comment) {
       if (!selectedArticle.comments) {
-        return addNewComment(selectedArticle._id, { ...commentForm, createdAt: moment.utc().format() }).then(response => {
-          dispatch({ type: ADD_COMMENT_RESPONDED, updatedArticle: response });
+        return addNewComment(selectedArticle._id, { ...commentForm, createdAt: moment.utc().format() }).then(article => {
+          const commentsCount = article.comments.length + countReplies(article.comments);
+          dispatch({ type: ADD_COMMENT_RESPONDED, updatedArticle: { ...article, commentsCount } });
         });
       }
-      return appendComment(selectedArticle._id, { ...commentForm, createdAt: moment.utc().format() }).then(response => {
-        dispatch({ type: ADD_COMMENT_RESPONDED, updatedArticle: response });
+      return appendComment(selectedArticle._id, { ...commentForm, createdAt: moment.utc().format() }).then(article => {
+        const commentsCount = article.comments.length + countReplies(article.comments);
+        dispatch({ type: ADD_COMMENT_RESPONDED, updatedArticle: { ...article, commentsCount } });
       });
     }
 
@@ -25,12 +29,14 @@ export function addCommentAction(comment, commentForm) {
       selectedArticleComment => (selectedArticleComment._key === comment._key ? selectedArticleComment.replies !== undefined : commentHaveReplies(comment._key, selectedArticleComment))
     );
     if (!commentHaveReply) {
-      return addNewReply(selectedArticle._id, comment._key, { ...commentForm, createdAt: moment.utc().format() }).then(response => {
-        dispatch({ type: ADD_COMMENT_RESPONDED, updatedArticle: response });
+      return addNewReply(selectedArticle._id, comment._key, { ...commentForm, createdAt: moment.utc().format() }).then(article => {
+        const commentsCount = article.comments.length + countReplies(article.comments);
+        dispatch({ type: ADD_COMMENT_RESPONDED, updatedArticle: { ...article, commentsCount } });
       });
     }
-    return appendReply(selectedArticle._id, comment._key, { ...commentForm, createdAt: moment.utc().format() }).then(response => {
-      dispatch({ type: ADD_COMMENT_RESPONDED, updatedArticle: response });
+    return appendReply(selectedArticle._id, comment._key, { ...commentForm, createdAt: moment.utc().format() }).then(article => {
+      const commentsCount = article.comments.length + countReplies(article.comments);
+      dispatch({ type: ADD_COMMENT_RESPONDED, updatedArticle: { ...article, commentsCount } });
     });
   };
 }

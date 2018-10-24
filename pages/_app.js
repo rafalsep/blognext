@@ -23,7 +23,6 @@ class MyApp extends App {
   }
 
   render() {
-    console.log('render');
     const { Component, pageProps, store } = this.props;
     return (
       <Container>

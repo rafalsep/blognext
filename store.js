@@ -5,8 +5,8 @@ import blogReducer from './reducers/blog-reducer';
 import routeReducer from './reducers/route-reducer';
 import loginReducer from './reducers/login-reducer';
 
-export function initializeStore() {
-  return createStore(createReducer(), {}, composeWithDevTools(applyMiddleware(thunkMiddleware)));
+export function initializeStore(initialState) {
+  return createStore(createReducer(), initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)));
 }
 
 export default function createReducer() {

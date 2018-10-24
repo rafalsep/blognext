@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import { arrayOf, shape } from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { ANALYTICS_APP_ID, FACEBOOK_APP_ID } from 'common/env';
@@ -11,13 +12,13 @@ import { fetchArticle } from 'services/article-service';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import { selectArticleName } from 'common/article-name-selector';
+import { selectArticle } from 'common/article-selector';
 import Article from 'containers/Article/Article';
 import 'styles/theme.scss';
 
 class ArticlesPage extends PureComponent {
   static async getInitialProps({ store }) {
-    const article = await store.dispatch(fetchArticleAction());
-    return { article };
+    await store.dispatch(fetchArticleAction());
   }
 
   render() {
@@ -72,4 +73,8 @@ function fetchArticleAction() {
     });
 }
 
-export default ArticlesPage;
+const mapStateToProps = createStructuredSelector({
+  article: selectArticle()
+});
+
+export default connect(mapStateToProps)(ArticlesPage);
