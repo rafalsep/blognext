@@ -8,6 +8,9 @@
       "jsx": true
     }
   },
+  "env": {
+    "jest": true
+  },
   "globals": {
     "FB": true,
     "gapi": true,
@@ -33,6 +36,12 @@
       "error",
       {
         "devDependencies": true
+      }
+    ],
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowShortCircuit": true
       }
     ]
   },
