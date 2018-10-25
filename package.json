@@ -27,7 +27,7 @@
     "lint": "eslint ./components --quiet --cache"
   },
   "dependencies": {
-    "@sanity/block-content-to-react": "2.0.4",
+    "@sanity/block-content-to-react": "2.0.5",
     "@sanity/client": "0.135.0",
     "@sanity/image-url": "0.135.0",
     "compression": "1.7.3",
@@ -37,8 +37,8 @@
     "next-redux-wrapper": "2.0.0",
     "next-routes": "1.4.2",
     "prop-types": "15.6.2",
-    "react": "16.5.2",
-    "react-dom": "16.5.2",
+    "react": "16.6.0",
+    "react-dom": "16.6.0",
     "react-helmet": "5.2.0",
     "react-redux": "5.0.7",
     "react-share": "2.3.1",
@@ -63,10 +63,10 @@
     "eslint-plugin-prettier": "3.0.0",
     "eslint-plugin-react": "7.11.1",
     "express": "4.16.4",
-    "husky": "1.0.0-rc.14",
+    "husky": "1.1.2",
     "node-sass": "4.9.4",
     "prettier": "1.14.3",
-    "pretty-quick": "1.7.0",
+    "pretty-quick": "1.8.0",
     "spdy": "3.4.7"
   },
   "husky": {
