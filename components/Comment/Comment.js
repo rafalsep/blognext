@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { shape } from 'prop-types';
+import dayjs from 'dayjs';
 import AddComment from 'containers/AddComment';
-import moment from 'moment';
 import './Comment.scss';
 
 export default class Comment extends PureComponent {
@@ -34,7 +34,7 @@ export default class Comment extends PureComponent {
           </div>
           <div className="comment__timestamp">
             <a disabled href="http://TODO/#comment-43756">
-              <time dateTime={comment.createdAt}>{moment(comment.createdAt).format('LL')}</time>
+              <time dateTime={comment.createdAt}>{dayjs(comment.createdAt).format('dddd, MMMM D, YYYY H:mm')}</time>
             </a>
           </div>
         </footer>

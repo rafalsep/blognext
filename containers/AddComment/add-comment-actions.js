@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { appendComment, addNewComment, addNewReply, appendReply } from 'services/comments-service';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { ADD_COMMENT_RESPONDED } from 'events/comment-events';
 import { USER_LOGGED_OUT, USER_LOGIN_REQUESTED } from 'events/login-events';
 import { LOGIN_PROVIDER_FACEBOOK, LOGIN_PROVIDER_GOOGLE } from 'constants/login-providers';
@@ -14,12 +14,12 @@ export function addCommentAction(comment, commentForm) {
 
     if (!comment) {
       if (!selectedArticle.comments) {
-        return addNewComment(selectedArticle._id, { ...commentForm, createdAt: moment.utc().format() }).then(article => {
+        return addNewComment(selectedArticle._id, { ...commentForm, createdAt: dayjs().format() }).then(article => {
           const commentsCount = article.comments.length + countReplies(article.comments);
           dispatch({ type: ADD_COMMENT_RESPONDED, updatedArticle: { ...article, commentsCount } });
         });
       }
-      return appendComment(selectedArticle._id, { ...commentForm, createdAt: moment.utc().format() }).then(article => {
+      return appendComment(selectedArticle._id, { ...commentForm, createdAt: dayjs().format() }).then(article => {
         const commentsCount = article.comments.length + countReplies(article.comments);
         dispatch({ type: ADD_COMMENT_RESPONDED, updatedArticle: { ...article, commentsCount } });
       });
@@ -29,12 +29,12 @@ export function addCommentAction(comment, commentForm) {
       selectedArticleComment => (selectedArticleComment._key === comment._key ? selectedArticleComment.replies !== undefined : commentHaveReplies(comment._key, selectedArticleComment))
     );
     if (!commentHaveReply) {
-      return addNewReply(selectedArticle._id, comment._key, { ...commentForm, createdAt: moment.utc().format() }).then(article => {
+      return addNewReply(selectedArticle._id, comment._key, { ...commentForm, createdAt: dayjs().format() }).then(article => {
         const commentsCount = article.comments.length + countReplies(article.comments);
         dispatch({ type: ADD_COMMENT_RESPONDED, updatedArticle: { ...article, commentsCount } });
       });
     }
-    return appendReply(selectedArticle._id, comment._key, { ...commentForm, createdAt: moment.utc().format() }).then(article => {
+    return appendReply(selectedArticle._id, comment._key, { ...commentForm, createdAt: dayjs().format() }).then(article => {
       const commentsCount = article.comments.length + countReplies(article.comments);
       dispatch({ type: ADD_COMMENT_RESPONDED, updatedArticle: { ...article, commentsCount } });
     });
