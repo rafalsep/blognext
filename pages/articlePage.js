@@ -2,7 +2,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { arrayOf, shape } from 'prop-types';
+import { shape } from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { ANALYTICS_APP_ID, FACEBOOK_APP_ID } from 'common/env';
 import { FETCH_ARTICLE_RESPONDED } from 'events/article-events';
@@ -64,6 +64,10 @@ class ArticlesPage extends PureComponent {
     );
   }
 }
+
+ArticlesPage.propTypes = {
+  article: shape({}).isRequired
+};
 
 function fetchArticleAction() {
   return (dispatch, getState) =>

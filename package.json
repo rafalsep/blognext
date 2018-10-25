@@ -24,7 +24,8 @@
     "dev": "node server/server.js",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node server/server.js",
-    "lint": "eslint ./components --quiet --cache"
+    "lint": "eslint **/*.js",
+    "lint:fix": "eslint **/*.js --fix"
   },
   "dependencies": {
     "@sanity/block-content-to-react": "2.0.5",
@@ -50,6 +51,7 @@
   },
   "devDependencies": {
     "@zeit/next-sass": "1.0.1",
+    "babel-eslint": "10.0.1",
     "babel-plugin-lodash": "3.3.4",
     "babel-plugin-module-resolver": "3.1.1",
     "cross-env": "5.2.0",

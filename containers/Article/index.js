@@ -16,4 +16,3 @@ const withConnect = connect(
 );
 
 export default compose(withConnect)(Article);
-export { mapDispatchToProps };

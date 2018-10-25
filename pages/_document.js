@@ -1,3 +1,4 @@
+import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import Helmet from 'react-helmet';
 
@@ -22,13 +23,13 @@ export default class extends Document {
   // should render on <head>
   get helmetHeadComponents() {
     return Object.keys(this.props.helmet)
-      .filter(el => el !== 'htmlAttributes' && el !== 'bodyAttributes')
+      .filter(el => el !== 'htmlAttributes' && el !== 'bodyAttributes' && el !== 'title')
       .map(el => this.props.helmet[el].toComponent());
   }
 
   render() {
     return (
-      <html {...this.helmetHtmlAttrComponents}>
+      <html lang="en" {...this.helmetHtmlAttrComponents}>
         <Head>{this.helmetHeadComponents}</Head>
         <body {...this.helmetBodyAttrComponents}>
           <Main />

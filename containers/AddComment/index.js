@@ -22,4 +22,3 @@ const withConnect = connect(
 );
 
 export default compose(withConnect)(AddComment);
-export { mapDispatchToProps };

@@ -8,10 +8,10 @@ const initialState = {
 
 const loginReducer = createReducer(initialState, {
   [USER_LOGGED_IN](state, action) {
-    return { loginProvider: action.loginProvider, user: action.user };
+    return { ...state, loginProvider: action.loginProvider, user: action.user };
   },
-  [USER_LOGGED_OUT](state, action) {
-    return { loginProvider: undefined, user: undefined };
+  [USER_LOGGED_OUT](state) {
+    return { ...state, loginProvider: undefined, user: undefined };
   }
 });
 

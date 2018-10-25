@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { func, shape } from 'prop-types';
+import { shape } from 'prop-types';
 import ArticleContent from 'components/ArticleContent';
 import ShareArticle from 'components/ShareArticle';
 import Comments from 'components/Comments';

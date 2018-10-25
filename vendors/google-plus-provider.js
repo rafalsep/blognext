@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { USER_LOGGED_IN } from 'events/login-events';
 import { GOOGLE_PLUS_API_KEY, GOOGLE_PLUS_CLIENT_ID } from 'common/env';
 import { LOGIN_PROVIDER_GOOGLE } from 'constants/login-providers';

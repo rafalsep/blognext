@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
-import { arrayOf, shape } from 'prop-types';
+import { shape, arrayOf } from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { ANALYTICS_APP_ID, FACEBOOK_APP_ID } from 'common/env';
 import { APP_URL } from 'constants/seo';
@@ -24,8 +23,8 @@ class ArticlesPage extends PureComponent {
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="author" content="" />
-          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+          <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta name="theme-color" content="#3367D6" />
           <meta name="twitter:card" content="summary_large_image" />
           <link rel="shortcut icon" href="static/images/favicon.ico" />

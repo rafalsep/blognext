@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { USER_LOGGED_IN } from 'events/login-events';
 import { FACEBOOK_APP_ID } from 'common/env';
 import { LOGIN_PROVIDER_FACEBOOK } from 'constants/login-providers';
