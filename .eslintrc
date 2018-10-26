@@ -48,7 +48,6 @@
   "settings": {
     "import/resolver": {
       "babel-module": {
-        "root": ["./"],
         "alias": {
           "components": "./components",
           "containers": "./containers",
