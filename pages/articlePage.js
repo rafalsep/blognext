@@ -3,8 +3,6 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { shape } from 'prop-types';
-import { Helmet } from 'react-helmet';
-import { ANALYTICS_APP_ID, FACEBOOK_APP_ID } from 'common/env';
 import { FETCH_ARTICLE_RESPONDED } from 'events/article-events';
 import { APP_URL } from 'constants/seo';
 import { imageUrlFor } from 'utils/imageLoader';
@@ -13,7 +11,8 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 import { selectArticleName } from 'common/article-name-selector';
 import { selectArticle } from 'common/article-selector';
-import Article from 'containers/Article/Article';
+import Article from 'containers/Article';
+import Head from 'next/head';
 import 'styles/theme.scss';
 
 class ArticlesPage extends PureComponent {
@@ -23,18 +22,14 @@ class ArticlesPage extends PureComponent {
 
   render() {
     const { article } = this.props;
+
+    if (!article) {
+      return null;
+    }
+
     return (
       <div className="App">
-        <Helmet>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta name="author" content="" />
-          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-          <meta name="theme-color" content="#3367D6" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <link rel="shortcut icon" href="static/images/favicon.ico" />
-          <link rel="manifest" href="static/pwa/manifest.json" />
+        <Head>
           <title>{article.title}</title>
           <meta name="description" content={article.teaser.replace(/\n/g, ' ')} />
           <meta property="og:title" content={article.title} />
@@ -47,14 +42,10 @@ class ArticlesPage extends PureComponent {
               .height(252)
               .toString()}
           />
-          <link rel="alternate" href={APP_URL} hrefLang="en" />
-          <link rel="canonical" href={APP_URL} />
-          <meta property="og:url" content={APP_URL} />
-          <meta property="og:site_name" content="GOOD dev" />
-          <meta property="fb:app_id" content={FACEBOOK_APP_ID} />
-          <meta name="google-analytics" content={ANALYTICS_APP_ID} />
-          <script async src="https://www.google-analytics.com/analytics.js" />
-        </Helmet>
+          <link rel="alternate" href={`${APP_URL}post/${article.slug.current}`} hrefLang="en" />
+          <link rel="canonical" href={`${APP_URL}post/${article.slug.current}`} />
+          <meta property="og:url" content={`${APP_URL}post/${article.slug.current}`} />
+        </Head>
         <Header />
         <main role="main">
           <Article article={article} />
@@ -66,7 +57,11 @@ class ArticlesPage extends PureComponent {
 }
 
 ArticlesPage.propTypes = {
-  article: shape({}).isRequired
+  article: shape({})
+};
+
+ArticlesPage.defaultProps = {
+  article: undefined
 };
 
 function fetchArticleAction() {

@@ -5,15 +5,15 @@
   "background_color": "#3367D6",
   "display": "standalone",
   "scope": "/",
-  "start_url": "/blog",
+  "start_url": "/",
   "icons": [
     {
-      "src": "./icons-192.png",
+      "src": "/static/gooddev-logo.jpg",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "./icons-512.png",
+      "src": "/static/gooddev-logo.jpg",
       "type": "image/png",
       "sizes": "512x512"
     }

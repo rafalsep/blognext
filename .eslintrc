@@ -58,8 +58,7 @@
           "reducers": "./reducers",
           "constants": "./constants",
           "services": "./services",
-          "styles": "./styles",
-          "vendors": "./vendors"
+          "styles": "./styles"
         }
       }
     }

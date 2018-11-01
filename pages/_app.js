@@ -3,9 +3,10 @@ import { Provider } from 'react-redux';
 import App, { Container } from 'next/app';
 import withRedux from 'next-redux-wrapper';
 import { LOCATION_CHANGED } from 'events/location-events';
-import { initFacebook } from 'vendors/facebook-provider';
-import { initGooglePlus } from 'vendors/google-plus-provider';
-import { initAnalytics } from 'vendors/analytics-provider';
+import { initFacebook } from 'utils/facebook-provider';
+import { initGooglePlus } from 'utils/google-plus-provider';
+import { initAnalytics } from 'utils/analytics-provider';
+import { initServiceWorker } from 'utils/service-worker-provider';
 import { initializeStore } from '../store';
 
 class MyApp extends App {
@@ -17,6 +18,7 @@ class MyApp extends App {
   }
 
   componentDidMount() {
+    initServiceWorker();
     initFacebook(this.props.store.dispatch);
     initGooglePlus(this.props.store.dispatch);
     initAnalytics();

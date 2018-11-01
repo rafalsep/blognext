@@ -21,9 +21,9 @@
     "react"
   ],
   "scripts": {
-    "dev": "node server/server.js",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "cross-env NODE_ENV=production node server/server.js",
+    "start": "cross-env NODE_ENV=production node server.js",
     "lint": "eslint **/*.js",
     "lint:fix": "eslint **/*.js --fix",
     "test": "cross-env NODE_ENV=test jest --cache --silent -i",
@@ -42,7 +42,6 @@
     "prop-types": "15.6.2",
     "react": "16.6.0",
     "react-dom": "16.6.0",
-    "react-helmet": "5.2.0",
     "react-redux": "5.1.0",
     "react-share": "2.3.1",
     "redux": "4.0.1",
@@ -78,6 +77,8 @@
     "husky": "1.1.2",
     "node-sass": "4.9.4",
     "prettier": "1.14.3",
+    "next-workbox-webpack-plugin": "1.1.0",
+    "webpack-pwa-manifest": "3.7.1",
     "pretty-quick": "1.8.0",
     "spdy": "3.4.7"
   },

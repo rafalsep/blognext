@@ -6,6 +6,7 @@ node_modules
 stats.json
 env.js
 .next
+workbox
 
 # Cruft
 .DS_Store
