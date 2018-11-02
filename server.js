@@ -20,22 +20,20 @@ app.prepare().then(() => {
     server.use(compression({ level: 9 }));
   }
 
-  server.use(handler);
-
   server.get('*', (req, res) => {
-    if (req.url.includes('/sw')) {
-      const filePath = join(__dirname, 'static', 'workbox', 'sw.js');
+    if (req.url.includes('/service-worker')) {
+      const filePath = join(__dirname, '.next', 'service-worker.js');
       app.serveStatic(req, res, filePath);
-    } else if (req.url.includes('/manifest')) {
-      app.serveStatic(req, res, join(__dirname, 'static', 'manifest.json'));
+    } else if (req.url.includes('manifest')) {
+      app.serveStatic(req, res, join(__dirname, '.next', 'static', 'manifest.json'));
     } else if (req.url.includes('/robots')) {
       app.serveStatic(req, res, join(__dirname, 'static', 'robots.txt'));
-    } else if (req.url.startsWith('static/workbox/')) {
-      app.serveStatic(req, res, join(__dirname, req.url));
     } else {
       handler(req, res, req.url);
     }
   });
+
+  server.use(handler);
 
   spdy.createServer(options, server).listen(3000, err => {
     if (err) throw err;
