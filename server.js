@@ -16,6 +16,11 @@ const options = {
 
 app.prepare().then(() => {
   const server = express();
+  if (process.env.NODE_ENV === 'production') {
+    server.use(compression({ level: 9 }));
+  }
+
+  server.use(handler);
 
   server.get('*', (req, res) => {
     if (req.url.includes('/sw')) {
@@ -31,12 +36,6 @@ app.prepare().then(() => {
       handler(req, res, req.url);
     }
   });
-
-  server.use(handler);
-
-  if (process.env.NODE_ENV === 'production') {
-    server.use(compression());
-  }
 
   spdy.createServer(options, server).listen(3000, err => {
     if (err) throw err;
