@@ -1,5 +1,6 @@
 import React from 'react';
-import Document, { Main, NextScript, Head as NextHead } from 'next/document';
+import Document, { Main, NextScript, Head } from 'next/document';
+import styles from './document.scss';
 
 export default class extends Document {
   static async getInitialProps(ctx) {
@@ -10,11 +11,15 @@ export default class extends Document {
   render() {
     return (
       <html lang="en">
-        <NextHead />
-        <body className="custom_class">
+        <Head />
+        <body>
           <Main />
           <NextScript />
+          <noscript>
+            If you are seeing this message, that means <strong>JavaScript has been disabled on your browser</strong>, please <strong>enable JS</strong> to make this app work.
+          </noscript>
         </body>
+        <style jsx>{styles}</style>
       </html>
     );
   }

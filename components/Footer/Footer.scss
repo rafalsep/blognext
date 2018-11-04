@@ -2,10 +2,11 @@
 
 .Footer {
   border-top: 1px solid $main-border-color;
-  .footer__note {
-    justify-content: space-between;
-    padding: 20px 25px;
-    max-width: 1280px;
-    margin: 0 auto;
-  }
+}
+
+.footer__note {
+  justify-content: space-between;
+  padding: 20px 25px;
+  max-width: 1280px;
+  margin: 0 auto;
 }

@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react';
 import { func, arrayOf, shape } from 'prop-types';
 import TrendingArticles from 'containers/TrendingArticles';
 import ArticleHeading from 'components/ArticleHeading/index';
-import AboutAuthor from 'components/AboutAuthor';
+// import AboutAuthor from 'components/AboutAuthor';
 import GetInTouch from 'components/GetInTouch';
-import './Articles.scss';
+import styles from './Articles.scss';
 
 export default class Articles extends PureComponent {
   render() {
@@ -20,11 +20,11 @@ export default class Articles extends PureComponent {
             ))}
           </div>
           <div className="articles__sidebar">
-            <AboutAuthor />
             <GetInTouch onGetInTouchClick={registerGetInTouchClick} />
             <TrendingArticles />
           </div>
         </div>
+        <style jsx>{styles}</style>
       </section>
     );
   }

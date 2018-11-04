@@ -1,10 +1,9 @@
 /* eslint-disable no-underscore-dangle */
-import React from 'react';
+import React, { memo } from 'react';
 import { arrayOf, shape, number } from 'prop-types';
 import { isEmpty } from 'lodash';
 import Comment from 'components/Comment';
-
-import './Comments.scss';
+import styles from './Comments.scss';
 
 const Comments = ({ comments, commentsCount }) => (
   <div className="Comments">
@@ -19,6 +18,7 @@ const Comments = ({ comments, commentsCount }) => (
         </li>
       ))}
     </ol>
+    <style jsx>{styles}</style>
   </div>
 );
 
@@ -40,4 +40,4 @@ Comments.propTypes = {
   commentsCount: number.isRequired
 };
 
-export default Comments;
+export default memo(Comments);

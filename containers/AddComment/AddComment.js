@@ -1,10 +1,11 @@
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { PureComponent } from 'react';
 import { func, shape, bool, oneOf } from 'prop-types';
 import { FacebookIcon, GooglePlusIcon } from 'react-share';
 import { LOGIN_PROVIDER_FACEBOOK, LOGIN_PROVIDER_GOOGLE } from 'constants/login-providers';
-import './AddComment.scss';
+import LoggedInPanel from './LoggedInPanel';
+import AddCommentLogin from './AddCommentLogin';
+import AddCommentGuest from './AddCommentGuest';
+import styles from './AddComment.scss';
 
 export default class AddComment extends PureComponent {
   state = {
@@ -38,65 +39,15 @@ export default class AddComment extends PureComponent {
   renderLoggedOutPanel() {
     return (
       <React.Fragment>
-        <div className="add-comment__login">
-          <div>Fill in your details below or click an icon to log in:</div>
-          <div className="login__options">
-            <div className="login__option">
-              <button type="button" className="button-icon" onClick={() => this.props.login(LOGIN_PROVIDER_FACEBOOK)}>
-                <FacebookIcon size={25} />
-              </button>
-            </div>
-            <div className="login__option">
-              <button type="button" className="button-icon" onClick={() => this.props.login(LOGIN_PROVIDER_GOOGLE)}>
-                <GooglePlusIcon size={25} />
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="add-comment__expandable-section">
-          <div>
-            <label className="sticky">
-              <input name="email" type="email" size="30" required maxLength="100" value={this.state.email} onChange={this.handleInputChange} />
-              <label htmlFor="email">Email</label>
-            </label>
-          </div>
-          <div>
-            <label className="sticky">
-              <input name="name" type="text" size="30" required maxLength="100" value={this.state.name} onChange={this.handleInputChange} />
-              <label htmlFor="name">Name</label>
-            </label>
-          </div>
-          <div>
-            <label className="sticky">
-              <input name="website" type="url" size="30" maxLength="200" value={this.state.website} onChange={this.handleInputChange} />
-              <label htmlFor="website">Website (optional)</label>
-            </label>
-          </div>
-        </div>
+        <AddCommentLogin login={this.props.login} />
+        <AddCommentGuest onValueChange={this.handleInputChange} />
       </React.Fragment>
     );
   }
 
   renderLoggedInPanel() {
     const loggedInIcon = this.props.loginProvider === LOGIN_PROVIDER_FACEBOOK ? <FacebookIcon size={25} /> : <GooglePlusIcon size={25} />;
-
-    return (
-      <div className="add-comment__loggedIn">
-        <div className="loggedIn__avatar">
-          <img alt="user avatar" width={30} height={30} src={this.props.user.picture} />
-        </div>
-        <div className="loggedIn__commentingAs">Commenting as</div>
-        <div className="loggedIn__username">
-          <strong>{this.props.user.name}</strong>
-        </div>
-        <div className="loggedIn__icon">{loggedInIcon}</div>
-        <div className="loggedIn__logout">
-          <button type="button" className="button secondary small" onClick={this.props.logout}>
-            Logout
-          </button>
-        </div>
-      </div>
-    );
+    return <LoggedInPanel loggedInIcon={loggedInIcon} user={this.props.user} logout={this.props.logout} />;
   }
 
   renderExpandableSection() {
@@ -131,6 +82,7 @@ export default class AddComment extends PureComponent {
             </div>
           )}
         </form>
+        <style jsx>{styles}</style>
       </div>
     );
   }

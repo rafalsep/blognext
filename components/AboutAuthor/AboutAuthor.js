@@ -1,5 +1,5 @@
 import React from 'react';
-import './AboutAuthor.scss';
+import styles from './AboutAuthor.scss';
 
 const AboutAuthor = () => (
   <div className="AboutAuthor">
@@ -12,6 +12,7 @@ const AboutAuthor = () => (
         software best practices and paragliding.
       </p>
     </div>
+    <style jsx>{styles}</style>
   </div>
 );
 

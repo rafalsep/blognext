@@ -7,7 +7,7 @@ import { FETCH_ARTICLES_RESPONDED } from 'events/article-events';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import Articles from 'containers/Articles';
-import 'styles/theme.scss';
+import styles from 'styles/global-styles.scss';
 
 class IndexPage extends PureComponent {
   static async getInitialProps({ store }) {
@@ -33,6 +33,7 @@ class IndexPage extends PureComponent {
           <Articles articles={this.props.articles} />
         </main>
         <Footer />
+        <style jsx>{styles}</style>
       </div>
     );
   }

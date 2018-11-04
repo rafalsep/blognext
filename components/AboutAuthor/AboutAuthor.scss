@@ -2,6 +2,7 @@
 
 .AboutAuthor {
   margin-bottom: 35px;
+
   .header {
     font-family: $secondary-font;
     letter-spacing: $secondary-font-letter-spacing;
@@ -12,6 +13,7 @@
     text-transform: uppercase;
     margin-bottom: 15px;
   }
+
   .content {
     background: $secondary-background-color;
     box-shadow: $main-box-shadow;
@@ -19,9 +21,9 @@
     padding: 20px 15px 10px 15px;
     line-height: $font-size-sm-line-height;
     font-size: $font-size-sm;
+  }
 
-    .content-description {
-      margin-top: 10px;
-    }
+  .content-description {
+    margin-top: 10px;
   }
 }

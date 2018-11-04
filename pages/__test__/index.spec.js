@@ -9,7 +9,7 @@ import articlesRespone from './articles-response.json';
 import IndexPage from '../index';
 
 describe('Blog page integration test', () => {
-  test('should render <Blog />', async () => {
+  xtest('should render <Blog />', async () => {
     stub(sanity, 'fetch').returns(Promise.resolve(articlesRespone));
     const { store, props } = await createModelForPage(IndexPage);
 

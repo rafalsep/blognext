@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { APP_URL } from 'constants/seo';
 import {
   FacebookShareButton,
@@ -14,9 +14,9 @@ import {
   RedditIcon,
   EmailIcon
 } from 'react-share';
-import './ShareArticle.scss';
+import styles from './ShareArticle.scss';
 
-export default function ShareArticle() {
+const ShareArticle = () => {
   const articleUrl = APP_URL;
 
   return (
@@ -54,6 +54,9 @@ export default function ShareArticle() {
           </EmailShareButton>
         </li>
       </ul>
+      <style jsx>{styles}</style>
     </div>
   );
-}
+};
+
+export default memo(ShareArticle);

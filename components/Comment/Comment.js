@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react';
 import { shape } from 'prop-types';
 import dayjs from 'dayjs';
 import AddComment from 'containers/AddComment';
-import './Comment.scss';
+import Button from 'components/Button';
+import styles from './Comment.scss';
 
 export default class Comment extends PureComponent {
   state = {
@@ -42,11 +43,12 @@ export default class Comment extends PureComponent {
           <p className="comment__content">{comment.content}</p>
         </div>
         <div>
-          <button type="button" className="button comment__reply" onClick={this.showReplyForm}>
+          <Button type="button" className="button comment__reply" onClick={this.showReplyForm}>
             reply
-          </button>
+          </Button>
           {showReplyForm && <AddComment onAddComment={this.hideReplyForm} comment={comment} />}
         </div>
+        <style jsx>{styles}</style>
       </article>
     );
   }

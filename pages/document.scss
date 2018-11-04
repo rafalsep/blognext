@@ -1,0 +1,9 @@
+@import 'styles/variables';
+
+body {
+  font-family: $primary-font;
+  font-size: $primary-font-size;
+  line-height: $primary-font-line-height;
+  font-weight: $primary-font-weight;
+  color: $primary-color;
+}

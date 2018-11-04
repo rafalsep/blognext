@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
-import React from 'react';
+import React, { memo } from 'react';
 import { func } from 'prop-types';
 import { GITHUB, LINKEDIN, TWITTER } from 'constants/get-in-touch-redirects';
-import './GetInTouch.scss';
+import styles from './GetInTouch.scss';
 
 const GetInTouch = ({ onGetInTouchClick }) => (
   <div className="GetInTouch">
@@ -35,6 +35,7 @@ const GetInTouch = ({ onGetInTouchClick }) => (
         </li>
       </ul>
     </div>
+    <style jsx>{styles}</style>
   </div>
 );
 
@@ -42,4 +43,4 @@ GetInTouch.propTypes = {
   onGetInTouchClick: func.isRequired
 };
 
-export default GetInTouch;
+export default memo(GetInTouch);
