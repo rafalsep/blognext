@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'production') {
           {
             loader: styledJsx.loader,
             options: {
-              type: fileName => (fileName.includes('global') ? 'global' : 'scoped')
+              type: 'global'
             }
           }
         ]
@@ -115,7 +115,7 @@ if (process.env.NODE_ENV === 'production') {
           {
             loader: styledJsx.loader,
             options: {
-              type: fileName => (fileName.includes('global') ? 'global' : 'scoped')
+              type: 'global'
             }
           }
         ]

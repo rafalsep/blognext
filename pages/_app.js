@@ -9,8 +9,8 @@ import { initAnalytics } from 'utils/analytics-provider';
 import { initializeStore } from '../store';
 
 class MyApp extends App {
-  static async getInitialProps({ Component, ctx, router }) {
-    ctx.store.dispatch({ type: LOCATION_CHANGED, location: router.asPath });
+  static async getInitialProps({ Component, ctx }) {
+    ctx.store.dispatch({ type: LOCATION_CHANGED, location: ctx.asPath });
     return {
       pageProps: Component.getInitialProps ? await Component.getInitialProps(ctx) : {}
     };

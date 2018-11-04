@@ -4,10 +4,10 @@ const express = require('express');
 const compression = require('compression');
 const spdy = require('spdy');
 const fs = require('fs');
-const routes = require('./routes');
+const Router = require('./routes');
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' });
-const handler = routes.getRequestHandler(app);
+const handler = Router.getRequestHandler(app);
 
 const options = {
   key: fs.readFileSync(`${__dirname}/server.key`),

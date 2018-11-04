@@ -1,5 +1,7 @@
-const routes = require('next-routes');
+const Router = require('nextjs-dynamic-routes');
 
-module.exports = routes()
-  .add({ name: 'index', pattern: '/', page: 'index' })
-  .add({ name: 'articlePage', pattern: '/post/:articleName', page: 'articlePage' });
+const router = new Router();
+router.add({ name: 'index', pattern: '/' });
+router.add({ name: 'articlePage', pattern: '/post/:articleName' });
+
+module.exports = router;

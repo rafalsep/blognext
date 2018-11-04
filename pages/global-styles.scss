@@ -12,6 +12,14 @@ textarea {
 //  border: 1px solid rgba( 0, 0, 0, 0.2 );
 //}
 
+body {
+  font-family: $primary-font;
+  font-size: $primary-font-size;
+  line-height: $primary-font-line-height;
+  font-weight: $primary-font-weight;
+  color: $primary-color;
+}
+
 main {
   background: $main-background-color;
   min-height: calc(100vh - 140px);
@@ -85,4 +93,25 @@ textarea::placeholder {
   color: $primary-color;
   font-size: 14px;
   font-style: $primary-font;
+}
+
+a {
+  text-decoration: none;
+  color: $active-link-color;
+}
+
+a:hover {
+  color: $active-link-hover-color;
+}
+
+a:active {
+  color: $active-link-color;
+}
+
+a[disabled],
+a[disabled]:hover,
+a[disabled]:active {
+  border-color: $active-link-color;
+  color: $link-color;
+  cursor: default;
 }

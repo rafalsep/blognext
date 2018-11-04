@@ -22,7 +22,7 @@
   ],
   "scripts": {
     "dev": "node server.js",
-    "build": "next build",
+    "build": "cross-env NODE_ENV=production next build",
     "start": "cross-env NODE_ENV=production node server.js",
     "lint": "eslint **/*.js",
     "lint:fix": "eslint **/*.js --fix",
@@ -38,7 +38,7 @@
     "lodash": "4.17.11",
     "next": "7.0.2",
     "next-redux-wrapper": "2.0.0",
-    "next-routes": "1.4.2",
+    "nextjs-dynamic-routes": "2.2.1",
     "prop-types": "15.6.2",
     "react": "16.6.0",
     "react-dom": "16.6.0",

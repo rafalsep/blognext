@@ -13,7 +13,7 @@ import { selectArticleName } from 'common/article-name-selector';
 import { selectArticle } from 'common/article-selector';
 import Article from 'containers/Article';
 import Head from 'next/head';
-import styles from 'styles/global-styles.scss';
+import styles from './global-styles.scss';
 
 class ArticlesPage extends PureComponent {
   static async getInitialProps({ store }) {

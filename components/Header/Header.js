@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
-import Link from 'components/Link';
 import Head from 'next/head';
 import { ANALYTICS_APP_ID, FACEBOOK_APP_ID } from 'common/env';
+import { Link } from '../../routes';
 import styles from './Header.scss';
 
 const Header = () => (
@@ -23,7 +23,9 @@ const Header = () => (
     </Head>
     <div className="header__top">
       <div className="header__logo">
-        <Link href="/">&lt; GOOD dev &gt; - blog about programming best practices</Link>
+        <Link route="index">
+          <a>&lt; GOOD dev &gt; - blog about programming best practices</a>
+        </Link>
       </div>
       <div className="header__quote">
         <blockquote className="quote">Adapt what is useful, reject what is useless, and add what is specifically your own.</blockquote>
