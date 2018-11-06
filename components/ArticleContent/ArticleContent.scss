@@ -7,7 +7,6 @@
     .header__link {
       align-self: center;
       flex: 0 0 auto;
-      margin-left: 20px;
       .back-arrow {
         font-size: 20px;
       }
@@ -15,7 +14,7 @@
     .header__title {
       align-self: center;
       font-size: 2em;
-      margin: 0;
+      margin: 0 20px 0 0;
     }
   }
   .article-title {
@@ -29,6 +28,14 @@
     a {
       text-decoration: underline;
       color: $active-link-color;
+    }
+  }
+  @media only screen and (max-width: 1024px) {
+    .article-content__header {
+      flex-direction: column-reverse;
+      .header__link {
+        align-self: flex-start;
+      }
     }
   }
 }

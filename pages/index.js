@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { shape, arrayOf } from 'prop-types';
+import { connect } from 'react-redux';
 import Head from 'next/head';
 import { APP_URL } from 'constants/seo';
 import { fetchArticles } from 'services/article-service';
@@ -8,23 +9,30 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 import Articles from 'containers/Articles';
 import styles from './global-styles.scss';
+import { registerPageLoadedAction } from 'common/analytics-actions';
+import { selectArticles } from 'common/article-selector';
+import { createStructuredSelector } from 'reselect';
+
+const TITLE = 'GOOD dev - blog about programming best practices';
 
 class IndexPage extends PureComponent {
-  static async getInitialProps({ store }) {
-    const articles = await store.dispatch(fetchArticlesAction());
-    return { articles };
+  static async getInitialProps({ store, isServer }) {
+    await store.dispatch(fetchArticlesAction());
+    if (!isServer) {
+      store.dispatch(registerPageLoadedAction('/', TITLE));
+    }
   }
 
   render() {
     return (
       <div className="App">
         <Head>
-          <title>GOOD dev - blog about programming best practices</title>
+          <title>{TITLE}</title>
           <meta name="description" content="Good dev blog contains set of example based information how to build better software." />
           <link rel="alternate" href={APP_URL} hrefLang="en" />
           <link rel="canonical" href={APP_URL} />
           <meta property="og:url" content={APP_URL} />
-          <meta property="og:title" content="Good developer, best practices blog" />
+          <meta property="og:title" content={TITLE} />
           <meta property="og:description" content="Good dev blog is where developers can find information how to build a better software." />
           <meta property="og:image" content="static/gooddev-logo.png" />
         </Head>
@@ -33,9 +41,7 @@ class IndexPage extends PureComponent {
           <Articles articles={this.props.articles} />
         </main>
         <Footer />
-        <style jsx global>
-          {styles}
-        </style>
+        <style jsx>{styles}</style>
       </div>
     );
   }
@@ -53,4 +59,8 @@ function fetchArticlesAction() {
     });
 }
 
-export default IndexPage;
+const mapStateToProps = createStructuredSelector({
+  articles: selectArticles()
+});
+
+export default connect(mapStateToProps)(IndexPage);

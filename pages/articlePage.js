@@ -2,7 +2,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { shape } from 'prop-types';
+import { shape, func } from 'prop-types';
+import Head from 'next/head';
 import { FETCH_ARTICLE_RESPONDED } from 'events/article-events';
 import { APP_URL } from 'constants/seo';
 import { imageUrlFor } from 'utils/imageLoader';
@@ -11,13 +12,16 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 import { selectArticleName } from 'common/article-name-selector';
 import { selectArticle } from 'common/article-selector';
+import { registerPageLoadedAction } from 'common/analytics-actions';
 import Article from 'containers/Article';
-import Head from 'next/head';
 import styles from './global-styles.scss';
 
 class ArticlesPage extends PureComponent {
-  static async getInitialProps({ store }) {
-    await store.dispatch(fetchArticleAction());
+  static async getInitialProps({ store, isServer }) {
+    const article = await store.dispatch(fetchArticleAction());
+    if (!isServer) {
+      store.dispatch(registerPageLoadedAction(`/post/${article.slug.current}`, article.title));
+    }
   }
 
   render() {
