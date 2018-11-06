@@ -1,0 +1,16 @@
+@import 'app/styles/variables.scss';
+
+.add-comment__login {
+  display: flex;
+  justify-content: space-between;
+  background: #f5f5f5;
+  padding: 10px;
+  .login__options {
+    align-self: center;
+    display: flex;
+    margin-left: -5px;
+    .login__option {
+      margin: 0 5px;
+    }
+  }
+}

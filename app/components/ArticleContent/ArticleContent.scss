@@ -1,0 +1,41 @@
+@import 'app/styles/variables.scss';
+
+.ArticleContent {
+  .article-content__header {
+    display: flex;
+    justify-content: space-between;
+    .header__link {
+      align-self: center;
+      flex: 0 0 auto;
+      .back-arrow {
+        font-size: 20px;
+      }
+    }
+    .header__title {
+      align-self: center;
+      font-size: 2em;
+      margin: 0 20px 0 0;
+    }
+  }
+  .article-title {
+    text-decoration: none;
+    .back-arrow {
+      font-size: 20px;
+    }
+  }
+  .article-content__body {
+    margin-top: 20px;
+    a {
+      text-decoration: underline;
+      color: $active-link-color;
+    }
+  }
+  @media only screen and (max-width: 1024px) {
+    .article-content__header {
+      flex-direction: column-reverse;
+      .header__link {
+        align-self: flex-start;
+      }
+    }
+  }
+}

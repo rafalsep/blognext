@@ -1,6 +1,6 @@
 module.exports = {
   testEnvironment: 'node',
-  collectCoverageFrom: ['common/**/*.js', 'components/**/*.js', 'containers/**/*.js', 'pages/**/*.js', 'reducers/**/*.js', 'services/**/*.js', 'utils/**/*.js', '!**/*.index.js'],
+  collectCoverageFrom: ['app/**/*.js', '!app/**/*.spec.js', '!app/**/*.index.js'],
   // coverageThreshold: {
   //   global: {
   //     statements: 50,
@@ -10,7 +10,7 @@ module.exports = {
   //   }
   // },
   coverageReporters: ['lcov', 'text-summary'],
-  moduleDirectories: ['node_modules', 'common', 'components', 'containers', 'pages', 'reducers', 'services', 'utils'],
+  moduleDirectories: ['node_modules', 'app'],
   moduleFileExtensions: ['js'],
   cacheDirectory: './tmp/test-cache',
   moduleNameMapper: {
@@ -19,7 +19,7 @@ module.exports = {
   },
   setupTestFrameworkScriptFile: '<rootDir>/jest/validateProps.js',
   snapshotSerializers: ['enzyme-to-json/serializer'],
-  testMatch: ['**/__test__/**/*.spec.js'],
+  testMatch: ['<rootDir>/app/**/__test__/**/*.spec.js'],
   roots: ['<rootDir>'],
   setupFiles: ['<rootDir>/jest/test-setup.js'],
   coveragePathIgnorePatterns: ['/node_modules/', '/__tests__/']

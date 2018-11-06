@@ -19,16 +19,16 @@
       {
         "root": ["./"],
         "alias": {
-          "components": "./components",
-          "containers": "./containers",
-          "common": "./common",
-          "pages": "./pages",
-          "events": "./events",
-          "utils": "./utils",
-          "reducers": "./reducers",
-          "constants": "./constants",
-          "services": "./services",
-          "styles": "./styles"
+          "components": "./app/components",
+          "containers": "./app/containers",
+          "common": "./app/common",
+          "pages": "./app/pages",
+          "events": "./app/events",
+          "utils": "./app/utils",
+          "reducers": "./app/reducers",
+          "constants": "./app/constants",
+          "services": "./app/services",
+          "styles": "./app/styles"
         }
       }
     ]

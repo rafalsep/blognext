@@ -1,9 +1,0 @@
-@import 'styles/variables.scss';
-
-.add-comment__expandable-section {
-  padding: 0 20px 20px 20px;
-  background: #f5f5f5;
-  &.expandable-section--collapsed {
-    display: none;
-  }
-}
