@@ -2,7 +2,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { shape, func } from 'prop-types';
+import { shape } from 'prop-types';
 import Head from 'next/head';
 import { FETCH_ARTICLE_RESPONDED } from 'events/article-events';
 import { APP_URL } from 'constants/seo';
@@ -10,15 +10,14 @@ import { imageUrlFor } from 'utils/imageLoader';
 import { fetchArticle } from 'services/article-service';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import { selectArticleName } from 'common/article-name-selector';
 import { selectArticle } from 'common/article-selector';
 import { registerPageLoadedAction } from 'common/analytics-actions';
-import Article from 'containers/Article';
+import Article from 'containers/Article/Article';
 import styles from './global-styles.scss';
 
 class ArticlesPage extends PureComponent {
-  static async getInitialProps({ store, isServer }) {
-    const article = await store.dispatch(fetchArticleAction());
+  static async getInitialProps({ store, isServer, query }) {
+    const article = await store.dispatch(fetchArticleAction(query.slug));
     if (!isServer) {
       store.dispatch(registerPageLoadedAction(`/post/${article.slug.current}`, article.title));
     }
@@ -69,9 +68,9 @@ ArticlesPage.defaultProps = {
   article: undefined
 };
 
-function fetchArticleAction() {
-  return (dispatch, getState) =>
-    fetchArticle(selectArticleName()(getState())).then(article => {
+function fetchArticleAction(slug) {
+  return dispatch =>
+    fetchArticle(slug).then(article => {
       dispatch({ type: FETCH_ARTICLE_RESPONDED, article });
       return article;
     });

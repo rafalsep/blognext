@@ -16,7 +16,7 @@ export default class TrendingArticles extends PureComponent {
         <div className="trending-articles__body">
           <nav>
             {this.props.trendingArticles.map(trendingArticle => (
-              <Link key={trendingArticle.slug.current} route="articlePage" articleName={trendingArticle.slug.current} prefetch>
+              <Link key={trendingArticle.slug.current} route="post" slug={trendingArticle.slug.current} prefetch>
                 <a className="trending-articles__link">
                   <span className="trending-articles__image">
                     <img
